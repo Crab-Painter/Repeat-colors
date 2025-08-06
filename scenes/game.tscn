@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=3 uid="uid://cc2goipyf8l46"]
 
-[ext_resource type="Texture2D" uid="uid://dnk3ohv1ojxuq" path="res://assets/reset icon.png" id="1_80nbo"]
-[ext_resource type="Texture2D" uid="uid://81jflxdxpjhd" path="res://assets/delete icon.png" id="2_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://k44l0un347tc" path="res://assets/reset icon big.png" id="1_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://cvc4faa760e1i" path="res://assets/delete icon big.png" id="2_yqjtg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iotsf"]
 bg_color = Color(0.937255, 1, 0.937255, 1)
@@ -22,7 +22,7 @@ anti_aliasing = false
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mwb40"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc0e3"]
-bg_color = Color(1, 0.25098, 0.25098, 1)
+bg_color = Color(1, 0.498039, 0.498039, 1)
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jktm"]
@@ -39,7 +39,7 @@ corner_detail = 9
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5wjh"]
-bg_color = Color(0.247059, 1, 0.247059, 1)
+bg_color = Color(0.498039, 1, 0.498039, 1)
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vef74"]
@@ -55,7 +55,7 @@ bg_color = Color(0, 1, 0, 1)
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feb5d"]
-bg_color = Color(0.25098, 0.25098, 1, 1)
+bg_color = Color(0.498039, 0.498039, 1, 1)
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwb40"]
@@ -73,7 +73,7 @@ corner_detail = 1
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2o6t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vaj68"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 1, 0)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -86,7 +86,7 @@ corner_radius_bottom_left = 5
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2p71"]
-bg_color = Color(0.873298, 0.873298, 0.873298, 1)
+bg_color = Color(0.999999, 0.811965, 0.810624, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -99,7 +99,7 @@ corner_radius_bottom_left = 5
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xa8c5"]
-bg_color = Color(0.74978, 0.74978, 0.74978, 1)
+bg_color = Color(1, 0.74902, 0.74902, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -240,7 +240,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.873298, 0.873298, 0.873298, 1)
+border_color = Color(0.74902, 0.74902, 0.74902, 1)
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -358,7 +358,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_xa8c5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5b14r")
 text = "I'm ready!"
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="input container" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchor_left = 0.75
 anchor_top = 0.45
@@ -369,7 +369,7 @@ offset_top = -15.0
 offset_right = 50.0
 offset_bottom = 30.0
 
-[node name="Control buttons container" type="HBoxContainer" parent="CanvasLayer/Control"]
+[node name="Control buttons container" type="HBoxContainer" parent="CanvasLayer/input container"]
 layout_direction = 2
 layout_mode = 1
 anchors_preset = 3
@@ -384,7 +384,8 @@ grow_vertical = 0
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="Button reset" type="Button" parent="CanvasLayer/Control/Control buttons container"]
+[node name="Button reset" type="Button" parent="CanvasLayer/input container/Control buttons container"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_styles/focus = SubResource("StyleBoxEmpty_80nbo")
@@ -392,18 +393,22 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_215e1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e8heu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7sc4i")
 theme_override_styles/normal = SubResource("StyleBoxFlat_80cx4")
-icon = ExtResource("1_80nbo")
+icon = ExtResource("1_lnu2h")
+expand_icon = true
 
-[node name="Button delete" type="Button" parent="CanvasLayer/Control/Control buttons container"]
+[node name="Button delete" type="Button" parent="CanvasLayer/input container/Control buttons container"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_feb5d")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_rvswv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_boyg6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_e36ub")
 theme_override_styles/normal = SubResource("StyleBoxFlat_hb5m1")
-icon = ExtResource("2_e2o6t")
+icon = ExtResource("2_yqjtg")
+icon_alignment = 1
+expand_icon = true
 
-[node name="String background" type="Panel" parent="CanvasLayer/Control"]
+[node name="String background" type="Panel" parent="CanvasLayer/input container"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -413,7 +418,7 @@ offset_bottom = 22.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5p1p")
 
-[node name="string Container" type="HBoxContainer" parent="CanvasLayer/Control/String background"]
+[node name="string Container" type="HBoxContainer" parent="CanvasLayer/input container/String background"]
 layout_direction = 2
 layout_mode = 1
 anchors_preset = 15
@@ -424,35 +429,35 @@ grow_vertical = 2
 theme_override_constants/separation = 1
 alignment = 1
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/String background/string Container"]
+[node name="Input color 1" type="Panel" parent="CanvasLayer/input container/String background/string Container"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/Control/String background/string Container"]
+[node name="Input color 2" type="Panel" parent="CanvasLayer/input container/String background/string Container"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
 
-[node name="Panel3" type="Panel" parent="CanvasLayer/Control/String background/string Container"]
+[node name="Input color 3" type="Panel" parent="CanvasLayer/input container/String background/string Container"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
 
-[node name="Panel4" type="Panel" parent="CanvasLayer/Control/String background/string Container"]
+[node name="Input color 4" type="Panel" parent="CanvasLayer/input container/String background/string Container"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Simon" type="Panel" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.2
