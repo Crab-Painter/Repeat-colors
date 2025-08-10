@@ -1,7 +1,13 @@
-[gd_scene load_steps=36 format=3 uid="uid://cc2goipyf8l46"]
+[gd_scene load_steps=43 format=3 uid="uid://cc2goipyf8l46"]
 
+[ext_resource type="Script" uid="uid://cw2pwnm7yk1sm" path="res://scripts/Game.cs" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://k44l0un347tc" path="res://assets/reset icon big.png" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://cvc4faa760e1i" path="res://assets/delete icon big.png" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://ysy5vpkjrgwv" path="res://assets/enter icon big.png" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://cag42ok8uwdmt" path="res://scripts/ColorInputBox.cs" id="5_iywne"]
+[ext_resource type="Script" uid="uid://bggasbkx5r6c5" path="res://scripts/Simon.cs" id="6_gee14"]
+[ext_resource type="Script" uid="uid://dkyblku5sqff4" path="res://scripts/PointsCounter.cs" id="7_0tnpc"]
+[ext_resource type="Script" uid="uid://bbmwe77f4al3i" path="res://scripts/LivesCounter.cs" id="8_vtaks"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iotsf"]
 bg_color = Color(0.937255, 1, 0.937255, 1)
@@ -234,21 +240,28 @@ bg_color = Color(0.74978, 0.74978, 0.74978, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhcbd"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gee14"]
+bg_color = Color(0.74902, 0.74902, 0.74902, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1jbl"]
 bg_color = Color(1, 1, 1, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.74902, 0.74902, 0.74902, 1)
 
-[node name="Game" type="Control"]
+[node name="Game" type="Control" node_paths=PackedStringArray("ReadyButton", "RedButton", "GreenButton", "BlueButton", "ResetButton", "DeleteButton", "EnterButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_lbhrr")
+ReadyButton = NodePath("CanvasLayer/Ready button")
+RedButton = NodePath("CanvasLayer/Buttons container/GridContainer/Button red")
+GreenButton = NodePath("CanvasLayer/Buttons container/GridContainer/Button green")
+BlueButton = NodePath("CanvasLayer/Buttons container/GridContainer/Button blue")
+ResetButton = NodePath("CanvasLayer/input container/Control buttons container/Button reset")
+DeleteButton = NodePath("CanvasLayer/input container/Control buttons container/Button delete")
+EnterButton = NodePath("CanvasLayer/input container/Control buttons container/Button enter")
+RowCount = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -408,6 +421,18 @@ icon = ExtResource("2_yqjtg")
 icon_alignment = 1
 expand_icon = true
 
+[node name="Button enter" type="Button" parent="CanvasLayer/input container/Control buttons container"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_feb5d")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rvswv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_boyg6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e36ub")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hb5m1")
+icon = ExtResource("3_lnu2h")
+icon_alignment = 1
+expand_icon = true
+
 [node name="String background" type="Panel" parent="CanvasLayer/input container"]
 layout_mode = 1
 anchors_preset = 1
@@ -435,6 +460,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
+script = ExtResource("5_iywne")
 
 [node name="Input color 2" type="Panel" parent="CanvasLayer/input container/String background/string Container"]
 custom_minimum_size = Vector2(20, 20)
@@ -442,6 +468,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
+script = ExtResource("5_iywne")
+_positionIndex = 1
 
 [node name="Input color 3" type="Panel" parent="CanvasLayer/input container/String background/string Container"]
 custom_minimum_size = Vector2(20, 20)
@@ -449,6 +477,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
+script = ExtResource("5_iywne")
+_positionIndex = 2
 
 [node name="Input color 4" type="Panel" parent="CanvasLayer/input container/String background/string Container"]
 custom_minimum_size = Vector2(20, 20)
@@ -456,15 +486,70 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
+script = ExtResource("5_iywne")
+_positionIndex = 3
 
-[node name="Simon" type="Panel" parent="CanvasLayer"]
+[node name="Points counter" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Points:"
+script = ExtResource("7_0tnpc")
+_baseText = "Points: "
+
+[node name="Lives counter" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.2
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Lives: "
+script = ExtResource("8_vtaks")
+_baseText = "Lives: "
+
+[node name="Simon container" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchor_left = 0.5
 anchor_top = 0.2
 anchor_right = 0.5
 anchor_bottom = 0.2
+
+[node name="Simon background" type="Panel" parent="CanvasLayer/Simon container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -21.0
+offset_right = 21.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gee14")
+
+[node name="Simon" type="Panel" parent="CanvasLayer/Simon container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f1jbl")
+script = ExtResource("6_gee14")

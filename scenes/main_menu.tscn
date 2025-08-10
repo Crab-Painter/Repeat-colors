@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl3lvpm1vqum5"]
+[gd_scene load_steps=7 format=3 uid="uid://cl3lvpm1vqum5"]
+
+[ext_resource type="Script" uid="uid://pm0jmkecvbbc" path="res://scripts/MainMenu.cs" id="1_l6cm7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
 bg_color = Color(1, 0.929412, 0.74902, 1)
@@ -29,13 +31,17 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing = false
 
-[node name="Main menu" type="Control"]
+[node name="Main menu" type="Control" node_paths=PackedStringArray("StartGameButton", "OptionsButton", "ExitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_l6cm7")
+StartGameButton = NodePath("CanvasLayer/Buttons container/Start game")
+OptionsButton = NodePath("CanvasLayer/Buttons container/Settings")
+ExitButton = NodePath("CanvasLayer/Buttons container/Exit")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
