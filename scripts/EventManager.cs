@@ -10,6 +10,7 @@ public class EventManager
     public static Action<int> ChangePointsEvent;
     public static Action<List<string>> RoundStartsEvent;
     public static Action SimonSadEvent;
+    public static Action<bool> GameEndedEvent;
 
     public static void BroadcastChangeColorsInputEvent(List<string> colorsInput)
     {
@@ -33,6 +34,8 @@ public class EventManager
     {
         SimonSadEvent?.Invoke();
     }
-
-
+    public static void BroadcastGameEndedEvent(bool message)
+    {
+        GameEndedEvent?.Invoke(message);
+    }
 }

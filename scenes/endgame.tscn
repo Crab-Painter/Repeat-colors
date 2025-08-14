@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://01w7wed5vqu4"]
+
+[ext_resource type="Script" uid="uid://0jelweqqubbp" path="res://scripts/ExitGameButton.cs" id="1_577wx"]
+[ext_resource type="Theme" uid="uid://dhi1jj7tvkhav" path="res://styles/MenuButton.tres" id="1_m5up5"]
+[ext_resource type="Script" uid="uid://bthvrd6nnnq63" path="res://scripts/StartGameButton.cs" id="2_m5up5"]
+[ext_resource type="Script" uid="uid://dht13sxtik541" path="res://scripts/GameEndMessageLabel.cs" id="4_tbbo3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbbo3"]
+bg_color = Color(1, 0.929412, 0.74902, 1)
+
+[node name="End game screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbbo3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.8
+anchor_right = 0.5
+anchor_bottom = 0.8
+offset_left = -115.0
+offset_top = -10.0
+offset_right = 115.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Exit" type="Button" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme = ExtResource("1_m5up5")
+text = "Exit Game"
+script = ExtResource("1_577wx")
+
+[node name="Main Menu" type="Button" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme = ExtResource("1_m5up5")
+text = "Main Menu"
+
+[node name="Play Again" type="Button" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 20)
+layout_mode = 2
+theme = ExtResource("1_m5up5")
+text = "Play Again"
+script = ExtResource("2_m5up5")
+
+[node name="Game End Message" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.35
+anchor_right = 0.5
+anchor_bottom = 0.35
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.498039, 0.137255, 1, 1)
+theme_override_font_sizes/font_size = 40
+script = ExtResource("4_tbbo3")

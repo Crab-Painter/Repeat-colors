@@ -15,7 +15,7 @@ public partial class Game : Control
     private static readonly string RED = "#ff0000ff";
     private static readonly string GREEN = "#00ff00ff";
     private static readonly string BLUE = "#0000ffff";
-    private List<string> _inputSequence = []; 
+    private List<string> _inputSequence = [];
     private List<string> _generatedSequence = [];
 
     [Export] private Button ReadyButton;
@@ -35,17 +35,28 @@ public partial class Game : Control
         RedButton.Pressed += EnterRed;
         GreenButton.Pressed += EnterGreen;
         BlueButton.Pressed += EnterBlue;
-        ResetButton.Pressed += Reset;
-        DeleteButton.Pressed += Delete;
-        EnterButton.Pressed += Enter;
+        ResetButton.Pressed += ResetPressed;
+        DeleteButton.Pressed += DeletePressed;
+        EnterButton.Pressed += EnterPressed;
         EventManager.SimonSadEvent += StartRound;
 
-        EventManager.BroadcastChangeLivesEvent(_lives);
-        EventManager.BroadcastChangePointsEvent(_points);
+        ResetGame();
     }
     public override void _ExitTree()
     {
         EventManager.SimonSadEvent -= StartRound;
+    }
+
+    private void ResetGame()
+    {
+        _lives = 3;
+        _points = 0;
+        _generatedSequence.Clear();
+        _inputSequence.Clear();
+
+        EventManager.BroadcastChangeColorsInputEvent(_inputSequence);
+        EventManager.BroadcastChangeLivesEvent(_lives);
+        EventManager.BroadcastChangePointsEvent(_points);
     }
 
     private void SimonSays()
@@ -99,7 +110,7 @@ public partial class Game : Control
         EventManager.BroadcastChangeColorsInputEvent(_inputSequence);
     }
 
-    private void Reset()
+    private void ResetPressed()
     {
         if (!_isGameOn)
         {
@@ -109,7 +120,7 @@ public partial class Game : Control
         EventManager.BroadcastChangeColorsInputEvent(_inputSequence);
     }
 
-    private void Delete()
+    private void DeletePressed()
     {
         if ((_inputSequence.Count == 0) || !_isGameOn)
         {
@@ -119,7 +130,7 @@ public partial class Game : Control
         EventManager.BroadcastChangeColorsInputEvent(_inputSequence);
     }
 
-    private void Enter()
+    private void EnterPressed()
     {
         if ((_inputSequence.Count != RowCount) || (!_isGameOn))
         {
@@ -137,5 +148,17 @@ public partial class Game : Control
             EventManager.BroadcastChangeLivesEvent(_lives);
         }
         _isGameOn = false;
+
+        CheckGameEnd();
+    }
+    
+    private void CheckGameEnd()
+    {
+        bool isWin = _points >= 5;
+        if ((_lives <= 0) || isWin)
+        {
+            GetTree().ChangeSceneToFile("scenes/endgame.tscn");
+            EventManager.BroadcastGameEndedEvent(isWin);
+        }
     }
 }
