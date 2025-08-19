@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Repeatcolors.scripts;
+namespace Repeatcolors.scripts.menu;
 
 public partial class GameEndMessageLabel : Label
 {

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://01w7wed5vqu4"]
 
-[ext_resource type="Script" uid="uid://0jelweqqubbp" path="res://scripts/ExitGameButton.cs" id="1_577wx"]
+[ext_resource type="Script" path="res://scripts/mainScenes/menus/ExitGameButton.cs" id="1_577wx"]
 [ext_resource type="Theme" uid="uid://dhi1jj7tvkhav" path="res://styles/MenuButton.tres" id="1_m5up5"]
-[ext_resource type="Script" uid="uid://bthvrd6nnnq63" path="res://scripts/StartGameButton.cs" id="2_m5up5"]
-[ext_resource type="Script" uid="uid://dht13sxtik541" path="res://scripts/GameEndMessageLabel.cs" id="4_tbbo3"]
+[ext_resource type="Script" path="res://scripts/mainScenes/menus/StartGameButton.cs" id="2_m5up5"]
+[ext_resource type="Script" uid="uid://dht13sxtik541" path="res://scripts/menu/GameEndMessageLabel.cs" id="4_okmuu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbbo3"]
 bg_color = Color(1, 0.929412, 0.74902, 1)
@@ -70,4 +70,4 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.498039, 0.137255, 1, 1)
 theme_override_font_sizes/font_size = 40
-script = ExtResource("4_tbbo3")
+script = ExtResource("4_okmuu")

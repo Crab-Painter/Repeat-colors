@@ -1,13 +1,13 @@
-[gd_scene load_steps=43 format=3 uid="uid://cc2goipyf8l46"]
+[gd_scene load_steps=42 format=3 uid="uid://cc2goipyf8l46"]
 
-[ext_resource type="Script" uid="uid://cw2pwnm7yk1sm" path="res://scripts/Game.cs" id="1_lbhrr"]
+[ext_resource type="Script" uid="uid://cw2pwnm7yk1sm" path="res://scripts/game/Game.cs" id="1_gee14"]
 [ext_resource type="Texture2D" uid="uid://k44l0un347tc" path="res://assets/reset icon big.png" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://cvc4faa760e1i" path="res://assets/delete icon big.png" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://ysy5vpkjrgwv" path="res://assets/enter icon big.png" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://cag42ok8uwdmt" path="res://scripts/ColorInputBox.cs" id="5_iywne"]
-[ext_resource type="Script" uid="uid://bggasbkx5r6c5" path="res://scripts/Simon.cs" id="6_gee14"]
-[ext_resource type="Script" uid="uid://dkyblku5sqff4" path="res://scripts/PointsCounter.cs" id="7_0tnpc"]
-[ext_resource type="Script" uid="uid://bbmwe77f4al3i" path="res://scripts/LivesCounter.cs" id="8_vtaks"]
+[ext_resource type="PackedScene" uid="uid://dwoqfo1fgtrcc" path="res://scenes/inputColorBox.tscn" id="5_0tnpc"]
+[ext_resource type="Script" uid="uid://dkyblku5sqff4" path="res://scripts/game/PointsCounter.cs" id="6_vtaks"]
+[ext_resource type="Script" uid="uid://bbmwe77f4al3i" path="res://scripts/game/LivesCounter.cs" id="7_kvpfn"]
+[ext_resource type="Script" uid="uid://bggasbkx5r6c5" path="res://scripts/game/Simon.cs" id="8_dinhu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iotsf"]
 bg_color = Color(0.937255, 1, 0.937255, 1)
@@ -237,9 +237,6 @@ anti_aliasing = false
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5p1p"]
 bg_color = Color(0.74978, 0.74978, 0.74978, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhcbd"]
-bg_color = Color(1, 1, 1, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gee14"]
 bg_color = Color(0.74902, 0.74902, 0.74902, 1)
 
@@ -253,7 +250,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_lbhrr")
+script = ExtResource("1_gee14")
 ReadyButton = NodePath("CanvasLayer/Ready button")
 RedButton = NodePath("CanvasLayer/Buttons container/GridContainer/Button red")
 GreenButton = NodePath("CanvasLayer/Buttons container/GridContainer/Button green")
@@ -454,39 +451,19 @@ grow_vertical = 2
 theme_override_constants/separation = 1
 alignment = 1
 
-[node name="Input color 1" type="Panel" parent="CanvasLayer/input container/String background/string Container"]
-custom_minimum_size = Vector2(20, 20)
+[node name="Input color 1" parent="CanvasLayer/input container/String background/string Container" instance=ExtResource("5_0tnpc")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
-script = ExtResource("5_iywne")
 
-[node name="Input color 2" type="Panel" parent="CanvasLayer/input container/String background/string Container"]
-custom_minimum_size = Vector2(20, 20)
+[node name="Input color 2" parent="CanvasLayer/input container/String background/string Container" instance=ExtResource("5_0tnpc")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
-script = ExtResource("5_iywne")
 _positionIndex = 1
 
-[node name="Input color 3" type="Panel" parent="CanvasLayer/input container/String background/string Container"]
-custom_minimum_size = Vector2(20, 20)
+[node name="Input color 3" parent="CanvasLayer/input container/String background/string Container" instance=ExtResource("5_0tnpc")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
-script = ExtResource("5_iywne")
 _positionIndex = 2
 
-[node name="Input color 4" type="Panel" parent="CanvasLayer/input container/String background/string Container"]
-custom_minimum_size = Vector2(20, 20)
+[node name="Input color 4" parent="CanvasLayer/input container/String background/string Container" instance=ExtResource("5_0tnpc")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
-script = ExtResource("5_iywne")
 _positionIndex = 3
 
 [node name="Points counter" type="Label" parent="CanvasLayer"]
@@ -499,7 +476,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Points:"
-script = ExtResource("7_0tnpc")
+script = ExtResource("6_vtaks")
 _baseText = "Points: "
 
 [node name="Lives counter" type="Label" parent="CanvasLayer"]
@@ -513,7 +490,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Lives: "
-script = ExtResource("8_vtaks")
+script = ExtResource("7_kvpfn")
 _baseText = "Lives: "
 
 [node name="Simon container" type="Control" parent="CanvasLayer"]
@@ -552,4 +529,4 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f1jbl")
-script = ExtResource("6_gee14")
+script = ExtResource("8_dinhu")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwoqfo1fgtrcc"]
+
+[ext_resource type="Script" uid="uid://cag42ok8uwdmt" path="res://scripts/game/ColorInputBox.cs" id="1_mt6mh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhcbd"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Input color 1" type="Panel"]
+custom_minimum_size = Vector2(20, 20)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhcbd")
+script = ExtResource("1_mt6mh")

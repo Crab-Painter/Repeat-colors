@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Repeatcolors.scripts;
+namespace Repeatcolors.scripts.game;
 public partial class Simon : Panel
 {
     public override void _Ready()

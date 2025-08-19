@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Repeatcolors.scripts;
+namespace Repeatcolors.scripts.game;
 
 public partial class Game : Control
 {

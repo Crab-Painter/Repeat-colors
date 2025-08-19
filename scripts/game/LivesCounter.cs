@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Repeatcolors.scripts;
+namespace Repeatcolors.scripts.game;
 
 public partial class LivesCounter : Label
 {

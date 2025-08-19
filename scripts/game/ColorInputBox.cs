@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-namespace Repeatcolors.scripts;
+namespace Repeatcolors.scripts.game;
 
 public partial class ColorInputBox : Panel
 {
