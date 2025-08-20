@@ -243,7 +243,7 @@ bg_color = Color(0.74902, 0.74902, 0.74902, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1jbl"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="Game" type="Control" node_paths=PackedStringArray("ReadyButton", "RedButton", "GreenButton", "BlueButton", "ResetButton", "DeleteButton", "EnterButton")]
+[node name="Game screen" type="Control" node_paths=PackedStringArray("ReadyButton", "RedButton", "GreenButton", "BlueButton", "ResetButton", "DeleteButton", "EnterButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://xwm4nk8e60il"]
+
+[ext_resource type="Theme" uid="uid://dhi1jj7tvkhav" path="res://styles/MenuButton.tres" id="1_w6423"]
+[ext_resource type="Script" uid="uid://csnadgx078jhx" path="res://scripts/menu/SceneChangeButton.cs" id="2_hgor3"]
+
+[node name="Start game" type="Button"]
+custom_minimum_size = Vector2(70, 20)
+size_flags_vertical = 3
+theme = ExtResource("1_w6423")
+text = "Start Game"
+script = ExtResource("2_hgor3")
+sceneClassName = "gameScreen"

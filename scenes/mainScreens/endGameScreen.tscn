@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://01w7wed5vqu4"]
+[gd_scene load_steps=7 format=3 uid="uid://01w7wed5vqu4"]
 
-[ext_resource type="Script" path="res://scripts/mainScenes/menus/ExitGameButton.cs" id="1_577wx"]
-[ext_resource type="Theme" uid="uid://dhi1jj7tvkhav" path="res://styles/MenuButton.tres" id="1_m5up5"]
-[ext_resource type="Script" path="res://scripts/mainScenes/menus/StartGameButton.cs" id="2_m5up5"]
+[ext_resource type="PackedScene" uid="uid://xwm4nk8e60il" path="res://scenes/buttons/startGameButton.tscn" id="1_okmuu"]
+[ext_resource type="PackedScene" uid="uid://bj860cycr31cr" path="res://scenes/buttons/mainMenuButton.tscn" id="2_iruff"]
+[ext_resource type="Script" uid="uid://csnadgx078jhx" path="res://scripts/menu/SceneChangeButton.cs" id="3_dnaf5"]
+[ext_resource type="PackedScene" uid="uid://dumh76x1bhx5k" path="res://scenes/buttons/exitButton.tscn" id="3_i6s5e"]
 [ext_resource type="Script" uid="uid://dht13sxtik541" path="res://scripts/menu/GameEndMessageLabel.cs" id="4_okmuu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbbo3"]
@@ -40,25 +41,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Exit" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="Start game" parent="CanvasLayer/HBoxContainer" instance=ExtResource("1_okmuu")]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-theme = ExtResource("1_m5up5")
-text = "Exit Game"
-script = ExtResource("1_577wx")
 
-[node name="Main Menu" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="Main Menu" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_iruff")]
+layout_mode = 2
+script = ExtResource("3_dnaf5")
+
+[node name="Exit" parent="CanvasLayer/HBoxContainer" instance=ExtResource("3_i6s5e")]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-theme = ExtResource("1_m5up5")
-text = "Main Menu"
-
-[node name="Play Again" type="Button" parent="CanvasLayer/HBoxContainer"]
-custom_minimum_size = Vector2(70, 20)
-layout_mode = 2
-theme = ExtResource("1_m5up5")
-text = "Play Again"
-script = ExtResource("2_m5up5")
 
 [node name="Game End Message" type="Label" parent="CanvasLayer"]
 anchors_preset = -1

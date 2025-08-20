@@ -11,6 +11,7 @@ public class EventManager
     public static Action<List<string>> RoundStartsEvent;
     public static Action SimonSadEvent;
     public static Action<bool> GameEndedEvent;
+    public static Action<string> ChangeSceneRequestedEvent;
 
     public static void BroadcastChangeColorsInputEvent(List<string> colorsInput)
     {
@@ -34,8 +35,12 @@ public class EventManager
     {
         SimonSadEvent?.Invoke();
     }
-    public static void BroadcastGameEndedEvent(bool message)
+    public static void BroadcastGameEndedEvent(bool message)//TODO rename
     {
         GameEndedEvent?.Invoke(message);
+    }
+    public static void BroadcastChangeSceneRequestedEvent(string sceneClassName)
+    {
+        ChangeSceneRequestedEvent?.Invoke(sceneClassName);
     }
 }

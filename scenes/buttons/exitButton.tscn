@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dumh76x1bhx5k"]
 
 [ext_resource type="Theme" uid="uid://dhi1jj7tvkhav" path="res://styles/MenuButton.tres" id="1_gvisp"]
-[ext_resource type="Script" uid="uid://bthvrd6nnnq63" path="res://scripts/menu/StartGameButton.cs" id="2_gvisp"]
+[ext_resource type="Script" uid="uid://0jelweqqubbp" path="res://scripts/menu/ExitGameButton.cs" id="2_ys7j8"]
 
 [node name="Exit" type="Button"]
+custom_minimum_size = Vector2(70, 20)
 size_flags_vertical = 3
 theme = ExtResource("1_gvisp")
 text = "Exit"
-script = ExtResource("2_gvisp")
+script = ExtResource("2_ys7j8")

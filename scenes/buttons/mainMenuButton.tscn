@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj860cycr31cr"]
+
+[ext_resource type="Theme" uid="uid://dhi1jj7tvkhav" path="res://styles/MenuButton.tres" id="1_47m6m"]
+[ext_resource type="Script" uid="uid://csnadgx078jhx" path="res://scripts/menu/SceneChangeButton.cs" id="2_kxm2q"]
+
+[node name="Main Menu" type="Button"]
+custom_minimum_size = Vector2(70, 20)
+theme = ExtResource("1_47m6m")
+text = "Main Menu"
+script = ExtResource("2_kxm2q")
+sceneClassName = "mainMenu"
