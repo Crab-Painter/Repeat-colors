@@ -157,7 +157,6 @@ public partial class Game : Control
         bool isWin = _points >= 5;
         if ((_lives <= 0) || isWin)
         {
-            GetTree().ChangeSceneToFile("scenes/endgame.tscn");
             EventManager.BroadcastGameEndedEvent(isWin);
         }
     }

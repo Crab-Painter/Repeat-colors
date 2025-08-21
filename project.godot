@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Repeat colors"
-run/main_scene="uid://c0ugcm4ddryby"
+run/main_scene="uid://cc2goipyf8l46"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://scripts/GameManager.cs"
 
 [display]
 

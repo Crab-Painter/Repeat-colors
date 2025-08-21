@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://01w7wed5vqu4"]
 
+[ext_resource type="Script" uid="uid://b0pgnkjj3aagc" path="res://scripts/menu/EndGameScreen.cs" id="1_ggw8v"]
 [ext_resource type="PackedScene" uid="uid://xwm4nk8e60il" path="res://scenes/buttons/startGameButton.tscn" id="1_okmuu"]
 [ext_resource type="PackedScene" uid="uid://bj860cycr31cr" path="res://scenes/buttons/mainMenuButton.tscn" id="2_iruff"]
-[ext_resource type="Script" uid="uid://csnadgx078jhx" path="res://scripts/menu/SceneChangeButton.cs" id="3_dnaf5"]
 [ext_resource type="PackedScene" uid="uid://dumh76x1bhx5k" path="res://scenes/buttons/exitButton.tscn" id="3_i6s5e"]
-[ext_resource type="Script" uid="uid://dht13sxtik541" path="res://scripts/menu/GameEndMessageLabel.cs" id="4_okmuu"]
+[ext_resource type="Script" uid="uid://c5pad7ndtdj7x" path="res://scripts/menu/GameEndLabel.cs" id="5_r2vta"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbbo3"]
 bg_color = Color(1, 0.929412, 0.74902, 1)
@@ -14,8 +14,13 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ggw8v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -47,7 +52,6 @@ layout_mode = 2
 
 [node name="Main Menu" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_iruff")]
 layout_mode = 2
-script = ExtResource("3_dnaf5")
 
 [node name="Exit" parent="CanvasLayer/HBoxContainer" instance=ExtResource("3_i6s5e")]
 custom_minimum_size = Vector2(70, 0)
@@ -63,4 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.498039, 0.137255, 1, 1)
 theme_override_font_sizes/font_size = 40
-script = ExtResource("4_okmuu")
+text = "game end"
+script = ExtResource("5_r2vta")
+winMessage = "You win!"
+loseMessage = "You lose("
