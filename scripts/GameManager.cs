@@ -1,13 +1,11 @@
 using Godot;
 using Repeatcolors.scripts.menu;
-using System;
-using System.Collections.Generic;
 
 namespace Repeatcolors.scripts;
 
 public partial class GameManager : Node
 {
-    enum MainSceneNames
+    public enum MainSceneNames
     {
         mainMenu,
         gameScreen,
@@ -18,19 +16,30 @@ public partial class GameManager : Node
     // private Scene
     public override void _Ready()
     {
+        Init();
         EventManager.GameEndedEvent += EndGame;
+        EventManager.ChangeSceneRequestedEvent += ChangeScene;
     }
     public override void _ExitTree()
     {
         EventManager.GameEndedEvent -= EndGame;
     }
-
     public void EndGame(bool isWin)
     {
-        string scenePath = GetMainScenePathByClassName(MainSceneNames.endGameScreen.ToString());
-        EndGameScreen endgameScene  = ResourceLoader.Load<PackedScene>(scenePath).Instantiate<EndGameScreen>();
+        EndGameScreen endgameScene = GetMainScenePackedByClassName(MainSceneNames.endGameScreen).Instantiate<EndGameScreen>();
         endgameScene.IsWin = isWin;
         ChangeSceneTo(endgameScene);
+    }
+
+    public void ChangeScene(MainSceneNames sceneName)
+    {
+        Node endgameScene = GetMainScenePackedByClassName(sceneName).Instantiate<Node>();
+        ChangeSceneTo(endgameScene);
+    }
+    private void Init()
+    {
+        Node mainMenuNode = GetMainScenePackedByClassName(MainSceneNames.mainMenu).Instantiate<Node>();
+        ChangeSceneTo(mainMenuNode);
     }
     private void ChangeSceneTo(Node newScene)
     {
@@ -42,8 +51,10 @@ public partial class GameManager : Node
         currentScene = newScene;
     }
 
-    private static string GetMainScenePathByClassName(string sceneClassName)
+    public static PackedScene GetMainScenePackedByClassName(MainSceneNames sceneClassName)
     {
-        return "scenes/mainScreens/" + sceneClassName + ".tscn";
+        string mainMenuPath = "scenes/mainScreens/" + sceneClassName.ToString() + ".tscn";
+        PackedScene resultScene = ResourceLoader.Load<PackedScene>(mainMenuPath);
+        return resultScene;
     }
 }

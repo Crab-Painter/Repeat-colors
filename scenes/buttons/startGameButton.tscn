@@ -9,4 +9,4 @@ size_flags_vertical = 3
 theme = ExtResource("1_w6423")
 text = "Start Game"
 script = ExtResource("2_hgor3")
-sceneClassName = "gameScreen"
+SceneClassName = 1

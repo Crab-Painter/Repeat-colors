@@ -1,16 +1,18 @@
+using System;
 using Godot;
+// using Repeatcolors.scripts;
 
 namespace Repeatcolors.scripts.menu;
 
 public partial class SceneChangeButton : Button
 {
-    [Export] string sceneClassName;
+    [Export] GameManager.MainSceneNames SceneClassName {get;set;}
     public override void _Ready()
     {
         Pressed += SendEvent;
     }
     private void SendEvent()
     {
-        EventManager.BroadcastChangeSceneRequestedEvent(sceneClassName);
+        EventManager.BroadcastChangeSceneRequestedEvent(SceneClassName);
     }
 }

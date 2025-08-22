@@ -8,4 +8,3 @@ custom_minimum_size = Vector2(70, 20)
 theme = ExtResource("1_47m6m")
 text = "Main Menu"
 script = ExtResource("2_kxm2q")
-sceneClassName = "mainMenu"
