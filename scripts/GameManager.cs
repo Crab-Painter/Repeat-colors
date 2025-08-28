@@ -13,7 +13,7 @@ public partial class GameManager : Node
 
     }
     private Node currentScene;
-    // private Scene
+
     public override void _Ready()
     {
         Init();
@@ -23,6 +23,7 @@ public partial class GameManager : Node
     public override void _ExitTree()
     {
         EventManager.GameEndedEvent -= EndGame;
+        EventManager.ChangeSceneRequestedEvent -= ChangeScene;
     }
     public void EndGame(bool isWin)
     {

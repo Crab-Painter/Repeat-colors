@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cpulhnenb3tvj"]
+
+[node name="Game name" type="Label"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.05
+anchor_right = 0.5
+anchor_bottom = 0.35
+offset_left = -81.5
+offset_right = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.498039, 0.137255, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "text"
+horizontal_alignment = 1
+vertical_alignment = 1

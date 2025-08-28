@@ -1,11 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cl3lvpm1vqum5"]
 
 [ext_resource type="Theme" uid="uid://dhi1jj7tvkhav" path="res://styles/MenuButton.tres" id="1_bqqt6"]
-[ext_resource type="PackedScene" uid="uid://xwm4nk8e60il" path="res://scenes/buttons/startGameButton.tscn" id="2_bqqt6"]
-[ext_resource type="PackedScene" uid="uid://dumh76x1bhx5k" path="res://scenes/buttons/exitButton.tscn" id="3_wu84c"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
-bg_color = Color(1, 0.929412, 0.74902, 1)
+[ext_resource type="PackedScene" uid="uid://cr28awwiiswmg" path="res://scenes/menuComponents/menuBackground.tscn" id="1_mg7py"]
+[ext_resource type="PackedScene" uid="uid://xwm4nk8e60il" path="res://scenes/menuComponents/buttons/startGameButton.tscn" id="2_bqqt6"]
+[ext_resource type="PackedScene" uid="uid://dumh76x1bhx5k" path="res://scenes/menuComponents/buttons/exitButton.tscn" id="3_wu84c"]
 
 [node name="Main menu" type="Control"]
 layout_mode = 3
@@ -17,14 +15,7 @@ grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Background" type="Panel" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_bqqt6")
-theme_override_styles/panel = SubResource("StyleBoxFlat_rhts7")
+[node name="Background" parent="CanvasLayer" instance=ExtResource("1_mg7py")]
 
 [node name="Buttons container" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = -1
