@@ -9,7 +9,8 @@ public partial class GameManager : Node
     {
         mainMenu,
         gameScreen,
-        endGameScreen
+        endGameScreen,
+        settingsScreen
 
     }
     private Node currentScene;
@@ -19,11 +20,13 @@ public partial class GameManager : Node
         Init();
         EventManager.GameEndedEvent += EndGame;
         EventManager.ChangeSceneRequestedEvent += ChangeScene;
+        EventManager.ResolutionChangeRequestEvent += ChangeResolution;
     }
     public override void _ExitTree()
     {
         EventManager.GameEndedEvent -= EndGame;
         EventManager.ChangeSceneRequestedEvent -= ChangeScene;
+        EventManager.ResolutionChangeRequestEvent -= ChangeResolution;
     }
     public void EndGame(bool isWin)
     {
@@ -57,5 +60,10 @@ public partial class GameManager : Node
         string mainMenuPath = "scenes/mainScreens/" + sceneClassName.ToString() + ".tscn";
         PackedScene resultScene = ResourceLoader.Load<PackedScene>(mainMenuPath);
         return resultScene;
+    }
+
+    public void ChangeResolution(int width, int hight)
+    {
+        GetWindow().Size = new Vector2I(width, hight);
     }
 }

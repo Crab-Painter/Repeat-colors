@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://qhxfolmo87t"]
+[gd_scene load_steps=5 format=3 uid="uid://qhxfolmo87t"]
 
 [ext_resource type="PackedScene" uid="uid://cr28awwiiswmg" path="res://scenes/menuComponents/menuBackground.tscn" id="1_4jg4i"]
+[ext_resource type="Theme" uid="uid://dpsmxaoiuc5n5" path="res://styles/Gemeral menu theme.tres" id="1_43okr"]
+[ext_resource type="PackedScene" uid="uid://cpulhnenb3tvj" path="res://scenes/menuComponents/menuMainLabel.tscn" id="2_taxu1"]
+[ext_resource type="Script" uid="uid://bdioi6goep72m" path="res://scripts/menu/ResolutionButton.cs" id="4_irmid"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -9,7 +12,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_43okr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Background" parent="CanvasLayer" instance=ExtResource("1_4jg4i")]
+
+[node name="Game name" parent="CanvasLayer" instance=ExtResource("2_taxu1")]
+text = "Settings"
+
+[node name="Resolution Container" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Resolution Container"]
+layout_mode = 2
+theme = ExtResource("1_43okr")
+text = "Resolution: "
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/Resolution Container"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "320x180"
+popup/item_0/id = 0
+popup/item_1/text = "640x360"
+popup/item_1/id = 1
+popup/item_2/text = "1600x900"
+popup/item_2/id = 2
+popup/item_3/text = "1920x1080"
+popup/item_3/id = 3
+script = ExtResource("4_irmid")

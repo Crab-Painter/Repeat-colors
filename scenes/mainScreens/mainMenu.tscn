@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl3lvpm1vqum5"]
+[gd_scene load_steps=6 format=3 uid="uid://cl3lvpm1vqum5"]
 
 [ext_resource type="Theme" uid="uid://dhi1jj7tvkhav" path="res://styles/MenuButton.tres" id="1_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://cr28awwiiswmg" path="res://scenes/menuComponents/menuBackground.tscn" id="1_mg7py"]
 [ext_resource type="PackedScene" uid="uid://xwm4nk8e60il" path="res://scenes/menuComponents/buttons/startGameButton.tscn" id="2_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://dumh76x1bhx5k" path="res://scenes/menuComponents/buttons/exitButton.tscn" id="3_wu84c"]
+[ext_resource type="Script" uid="uid://csnadgx078jhx" path="res://scripts/menu/SceneChangeButton.cs" id="4_back6"]
 
 [node name="Main menu" type="Control"]
 layout_mode = 3
@@ -39,6 +40,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_bqqt6")
 text = "Settings"
+script = ExtResource("4_back6")
+SceneClassName = 3
 
 [node name="Exit" parent="CanvasLayer/Buttons container" instance=ExtResource("3_wu84c")]
 layout_mode = 2

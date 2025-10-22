@@ -12,6 +12,8 @@ public class EventManager
     public static Action SimonSadEvent;
     public static Action<bool> GameEndedEvent;
     public static Action<GameManager.MainSceneNames> ChangeSceneRequestedEvent;
+    public static Action<int, int> ResolutionChangeRequestEvent;
+
 
     public static void BroadcastChangeColorsInputEvent(List<string> colorsInput)
     {
@@ -42,5 +44,10 @@ public class EventManager
     public static void BroadcastChangeSceneRequestedEvent(GameManager.MainSceneNames sceneName)
     {
         ChangeSceneRequestedEvent?.Invoke(sceneName);
+    }
+
+    public static void BroadcastResolutionChangeRequestEvent(int width, int hight)
+    {
+        ResolutionChangeRequestEvent?.Invoke(width, hight);
     }
 }

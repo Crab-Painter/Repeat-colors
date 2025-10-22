@@ -1,6 +1,5 @@
 using System;
 using Godot;
-// using Repeatcolors.scripts;
 
 namespace Repeatcolors.scripts.menu;
 
